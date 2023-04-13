@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Formulário</title>
+    <style>
+      fieldset {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+      }
+
+      input[type="text"], select, textarea {
+        margin-bottom: 10px;
+        padding: 5px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        width: 100%;
+      }
+
+      input[type="submit"], input[type="reset"] {
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 3px;
+        border: none;
+        color: #fff;
+        background-color: #007bff;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover, input[type="reset"]:hover {
+        background-color: #0062cc;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>Informações pessoais</legend>
+        <label>Nome:</label>
+        <input type="text" name="nome" required>
+        <label>Sobrenome:</label>
+        <input type="text" name="sobrenome" required>
+        <label>Telefone:</label>
+        <input type="tel" name="telefone" pattern="[0-9]{2} [0-9]{4,5}-[0-9]{4}" required>
+        <label>E-mail:</label>
+        <input type="email" name="email" required>
+      </fieldset>
+
+      <fieldset>
+        <legend></legend>
+        <label>Mensagem:</label>
+        <textarea name="mensagem"></textarea>
+        <label>Língua aplicada:</label>
+        <select name="lingua">
+          <option value="ingles">Inglês</option>
+          <option value="espanhol">Espanhol</option>
+          <option value="frances">Francês</option>
+          <option value="portugues">Português (pt-br)</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Protótipo</legend>
+        <label>Upload de arquivo:</label>
+        <input type="file" name="prototipo" accept=".pdf,.doc,.docx,.jpeg,.png" required>
+      </fieldset>
+
+      <fieldset>
+        <legend>Linguagens preferidas</legend>
+        <label><input type="checkbox" name="linguagem" value="javascript">Javascript</label>
+        <label><input type="checkbox" name="linguagem" value="python">Python</label>
+        <label><input type="checkbox" name="linguagem" value="java">Java</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Tipo de banco de dados</legend>
+        <label><input type="radio" name="banco" value="mysql">MySQL</label>
+        <label><input type="radio" name="banco" value="postgresql">PostgreSQL</label>
+        <label><input type="radio" name="banco" value="mongodb">MongoDB</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Preferências para reuniões</legend>
+        <label>Turno:</label>
+        <select name="turno">
+          <option value="manhã">Manhã</option>
+          <option value="tarde">Tarde</option>
+          <option value="noite">Noite</option>
+        </fildset>
+        <fieldset>
+         <form id="meuFormulario">
+            <label for="horario"> Horário sugerido para reunião:</label>
+            <input type="time" id="horario" name="horario" required>
+            
+          
+            <label for="data">Previsão de entrega desejada:</label>
+            <input type="date" id="data" name="data" required>
+          
+            <button type="button" id="limpar">Limpar</button>
+            <button type="submit" id="enviar">Enviar</button>
+          </form>
+          </fieldset>
