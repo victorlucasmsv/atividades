@@ -50,3 +50,70 @@ public class JogadorFutebol {
         return (double) golsMarcados / jogosJogados;
     }
 }
+public class Goleiro extends JogadorFutebol {
+    private int golsSofridos;
+
+    public Goleiro(String nome, int idade, int golsMarcados, int golsSofridos) {
+        super(nome, idade, golsMarcados, 0);
+        this.golsSofridos = golsSofridos;
+    }
+
+    public int getGolsSofridos() {
+        return golsSofridos;
+    }
+
+    public void setGolsSofridos(int golsSofridos) {
+        this.golsSofridos = golsSofridos;
+    }
+
+    @Override
+    public double calculaRendimento() {
+        if (getJogosJogados() == 0) {
+            return 0.0;
+        }
+        return (double) getGolsMarcados() / (getJogosJogados() + golsSofridos);
+    }
+}
+public class ClubeFutebol {
+    private JogadorFutebol[] jogadores;
+
+    public ClubeFutebol() {
+        this.jogadores = new JogadorFutebol[30];
+    }
+
+    public void incluirJogador(JogadorFutebol jogador) {
+        for (int i = 0; i < jogadores.length; i++) {
+            if (jogadores[i] == null) {
+                jogadores[i] = jogador;
+                break;
+            }
+        }
+    }
+
+    public JogadorFutebol buscarJogadorPorNome(String nome) {
+        for (JogadorFutebol jogador : jogadores) {
+            if (jogador != null && jogador.getNome().equals(nome)) {
+                return jogador;
+            }
+        }
+        return null;
+    }
+
+    public Goleiro buscarGoleiroMelhorRendimento() {
+        Goleiro melhorRendimento = null;
+        double maxRendimento = 0.0;
+
+        for (JogadorFutebol jogador : jogadores) {
+            if (jogador instanceof Goleiro) {
+                Goleiro goleiro = (Goleiro) jogador;
+                double rendimento = goleiro.calculaRendimento();
+                if (rendimento > maxRendimento) {
+                    maxRendimento = rendimento;
+                    melhorRendimento = goleiro;
+                }
+            }
+        }
+
+        return melhorRendimento;
+    }
+}
